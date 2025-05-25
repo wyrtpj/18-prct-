@@ -1,0 +1,55 @@
+start
+new a number
+set a TIME
+new year number
+set year 0
+loop s (a>31535999999)
+set a a-31536000000
+set year year+1
+end s
+new vis number
+set vis 0
+loop vi (year>3)
+set year year-4
+set vis vis+1
+end vi ?високосные дни
+new viday number
+set viday 0
+loop vida (vis>0)
+set viday viday+86400000 ?високосные дни в формате UTC
+set vis vis-1
+end vida
+new b number
+set b TIME-viday ?сегодгняшняя дата без високосных дней
+new dr number
+set dr 1180224000000
+set dr dr-viday ?день рождения без вискокосных дней
+new age number
+set age b-dr 
+new ageyear number
+set ageyear 0
+loop s (age>31535999999)
+set age age-31536000000
+set ageyear ageyear+1
+end s ?нашли возраст
+loop fff (b>31535999999)
+set b b-31536000000
+end fff ?нашли нынешний месяц со днем в формате UTC
+loop lll (dr>31535999999)
+set dr dr-31536000000
+end lll ?нашли месяц со днем дня рождения
+if (dr>b) ?значит дня рождения еще не было
+set ageyear ageyear+1 
+log string "В этом году вам будет " >> ageyear
+else ?если день рождения уже был
+log string "В этом году вам исполнилось " >> ageyear
+close
+loop ub (ageyear>4) 
+set ageyear ageyear-5
+end ub
+if (ageyear>0)
+log string "У вас нет юбилея в этом году"
+else 
+log string "У вас в этом году юбилей"
+close
+finish
