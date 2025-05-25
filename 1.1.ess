@@ -1,0 +1,46 @@
+start
+new a number
+set a TIME
+new year number
+set year 0
+loop s (a>31535999999)
+set a a-31536000000
+set year year+1
+end s
+new vis number
+set vis 0
+loop vi (year>3)
+set year year-4
+set vis vis+1
+end vi ?нашли високосные дни
+new viday number
+set viday 0
+loop vida (vis>0)
+set viday viday+86400000 ?високосные дни в формате UTC
+set vis vis-1
+end vida
+new b number
+set b TIME-viday
+new year1 number
+set year1 0
+loop ye (b>31535999999)
+set b b-31536000000
+set year1 year1+1
+end ye
+new month number
+set month 0
+loop mo (b>2591999999)
+set b b-2592000000
+set month month+1
+end mo
+new day number
+set day 0
+loop da (b>86399999)
+set b b-86400000
+set day day+1
+end da
+set day day+1
+set year1 year1+1970
+set month month+1
+log string "Сегодняшняя дата: " >> day >> "-" >> month>> "-" >> year1
+finish
