@@ -1,0 +1,20 @@
+start 
+new b number
+set b TIME
+new year number
+set year 0
+loop s (b>31536000000)
+set b b-31536000000
+set year year+1
+end s
+set year year+1970
+log string "Нынешний год:" >> year
+loop pro (year>3)
+set year year-4
+end pro
+if (1>year)
+log string "Год високосный"
+else 
+log string "Год не високосный"
+close
+finish
