@@ -1,0 +1,15 @@
+start
+new a number
+set a TIME
+new b number
+set b 1180224000000
+new age number
+set age a-b
+new day number
+set day 0
+loop s (age>86400000)
+set age age-86400000
+set day day+1
+end s
+log string "Мой возраст в днях:" >> day
+finish
