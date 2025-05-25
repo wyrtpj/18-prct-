@@ -1,0 +1,86 @@
+start
+new b number
+set b TIME-1123200000
+new year number
+set year 0
+loop s (b>31535999999)
+set b b-31536000000
+set year year+1
+end s
+new month number
+set month 0
+loop mo (b>2591999999)
+set b b-2592000000
+set month month+1
+end mo
+new day number
+set day 0
+loop da (b>86399999)
+set b b-86400000
+set day day+1
+end da
+new hour number
+set hour 0
+loop ho (b>3599999)
+set b b-3600000
+set hour hour+1
+end ho
+new min number
+set min 0
+loop mi (b>59000)
+set b b-60000
+set min min+1
+end mi
+new second number
+set second 0
+loop se (b>999)
+set b b-1000
+set second second+1
+end se
+set day day+1
+set year year+1970
+set month month+1
+log string "Международный UTC:" >> day >> "-" >> month >> "-" >> year >> "  " >> hour >> ":" >> min >> ":" >> second
+new a number
+set a TIME-1123200000+10800000
+new year1 number
+set year1 0
+loop s1 (a>31535999999)
+set a a-31536000000
+set year1 year1+1
+end s1
+new month1 number
+set month1 0
+loop mo1 (a>2591999999)
+set a a-2592000000
+set month1 month1+1
+end mo1
+new day1 number
+set day1 0
+loop da1 (a>86399999)
+set a a-86400000
+set day1 day1+1
+end da1
+new hour1 number
+set hour1 0
+loop ho1 (a>3599999)
+set a a-3600000
+set hour1 hour1+1
+end ho1
+new min1 number
+set min1 0
+loop mi1 (a>59000)
+set a a-60000
+set min1 min1+1
+end mi1
+new second1 number
+set second1 0
+loop se1 (a>999)
+set a a-1000
+set second1 second1+1
+end se1
+set day1 day1+1
+set year1 year1+1970
+set month1 month1+1
+log string "GMT+3 MSK:" >> day1 >> "-" >> month1 >> "-" >> year1 >> "  " >> hour1 >> ":" >> min1 >> ":" >> second1
+finish
